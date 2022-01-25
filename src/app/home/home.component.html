@@ -1,0 +1,10 @@
+<p>Bienvenue dans Pay My Buddy</p>
+
+<div *ngIf='!isAuthenticated || !loggedEmail'>
+    <ul class="">
+        <li routerLinkActive="active"><a routerLink="auth">Authentication</a></li>
+        <li routerLinkActive="active"><a routerLink="register">Register</a></li>
+    </ul>
+    
+</div>
+<router-outlet></router-outlet>
