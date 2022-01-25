@@ -1,4 +1,4 @@
-import { IAppAccountDto } from "./app-account";
+import { IAppAccountDto } from './app-account';
 
 export interface IUser {
     firstName: string;

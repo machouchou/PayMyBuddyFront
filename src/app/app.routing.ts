@@ -4,6 +4,7 @@ import { AuthentificationComponent } from './auth/authentification.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './home/register.component';
 import { WelcomeComponent } from './welcome/welcome.component';
+import { LoginService } from './service/login.service';
 
 const appRoutes: Routes = [
     {
@@ -20,13 +21,15 @@ const appRoutes: Routes = [
         component: RegisterComponent
     },
     {
-        path : 'auth',
+       path : 'auth',
+       // canActivate: [LoginService], 
         component : AuthentificationComponent
     },
     {
         path : 'welcome',
         component : WelcomeComponent
     }
+
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);

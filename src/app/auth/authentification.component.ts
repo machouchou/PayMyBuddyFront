@@ -14,6 +14,7 @@ export class AuthentificationComponent {
     public password: string;
     public showError: boolean;
     public errorMessage: string;
+    public isAuthenticated: boolean = !!localStorage.getItem('loginStatus');
 
     constructor(public http: HttpClient,
                 private route: ActivatedRoute,
@@ -22,6 +23,7 @@ export class AuthentificationComponent {
         this.password   = '';
         this.showError  = false;
         this.errorMessage = '';
+        this.isAuthenticated = false;
     }
 
     public login(): void {

@@ -11,5 +11,7 @@ export class NavBarComponent implements OnInit {
 
   ngOnInit() {
   }
-
+logout() {
+  fetch('http:localhost:8080/logout', { method: 'POST'}).then((response) => console.log(response));
+}
 }

@@ -12,7 +12,7 @@ export class UserFriendsComponent implements OnInit {
 listUser: IUser[] = [];
 errorMessage = '';
 tempUser: IUser;
-email = '';
+email = 'rg@gmail.com';
 friendList: IUser[];
 
 constructor(private userService: UserService) { }
