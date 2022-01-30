@@ -4,32 +4,51 @@ import { AuthentificationComponent } from './auth/authentification.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './home/register.component';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { LoginService } from './service/login.service';
+import { LoginComponent } from './pages/login/login.component';
+import { RegistrationComponent } from './pages/registration/registration.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { ListTransactionsComponent } from './pages/list-transactions/list-transactions.component';
+import { ListFriendsComponent } from './pages/list-friends/list-friends.component';
 
 const appRoutes: Routes = [
     {
         path: '',
-        redirectTo : 'home',
+        redirectTo : 'login',
         pathMatch : 'prefix'
     },
     {
-        path: 'home',
-        component: HomeComponent
+        path: 'login',
+        component: LoginComponent
     },
     {
         path: 'register',
-        component: RegisterComponent
+        component: RegistrationComponent
     },
     {
        path : 'auth',
-       // canActivate: [LoginService], 
+       // canActivate: [LoginService],
         component : AuthentificationComponent
     },
     {
         path : 'welcome',
         component : WelcomeComponent
+    },
+    {
+        path : 'admin',
+        component : AdminComponent,
+        children: [
+            {
+                path : 'list-transactions',
+                component : ListTransactionsComponent,
+                pathMatch: 'prefix'
+            },
+            {
+                path : 'list-friends',
+                component : ListFriendsComponent,
+                pathMatch: 'prefix'
+            }
+        ]
     }
-
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);

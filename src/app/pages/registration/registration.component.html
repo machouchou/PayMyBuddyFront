@@ -1,0 +1,81 @@
+<div class="container">
+    <!--<br>  <p class="text-center">More bootstrap 4 components on <a href="http://bootstrap-ecommerce.com/"> Bootstrap-ecommerce.com</a></p>
+    <hr>-->
+    
+    <div class="row">
+    <aside class="col-sm-4 form-login">
+    <p>Register form style 1</p>
+    <div class="card">
+    <article class="card-body">
+    <a routerLink="/login" class="float-right btn btn-outline-primary">Sign in</a>
+    <h4 class="card-title mb-4 mt-1">Sign up</h4>
+    <form [formGroup]="registerForm" (submit)="onSubmit()">
+        <div class="form-group" >
+            <label>Your firstName</label>
+                <input name="" class="form-control" placeholder="First Name" type="text" formControlName="firstName" >
+                <span *ngIf="registerForm?.get('firstName')?.touched && registerForm?.get('firstName')?.invalid" style="color: red;"></span>
+        </div> <!-- form-group// -->
+        <div class="form-group">
+        <label>Your lastName</label>
+            <input name="" class="form-control" placeholder="Last Name" type="text" formControlName="lastName" >
+            <span *ngIf="registerForm?.get('lastName')?.touched && registerForm?.get('lastName')?.invalid" style="color: red;"></span>
+        </div> 
+        <div class="form-group">
+            <label>Your birthDate</label>
+                <input name="" class="form-control" placeholder="BirthDate" type="localDate" formControlName="birthDate" >
+                <span *ngIf="registerForm?.get('birthDate')?.touched && registerForm?.get('birthDate')?.invalid" style="color: red;"></span>
+            </div>
+        <div class="form-group">
+        <label>Your address</label>
+            <input name="" class="form-control" placeholder="address" type="text" formControlName="address" >
+            <span *ngIf="registerForm?.get('address')?.touched && registerForm?.get('address')?.invalid" style="color: red;"></span>
+        </div> <!-- form-group// -->
+        <div class="form-group">
+        <label>Your country</label>
+            <input name="" class="form-control" placeholder="Country" type="text" formControlName="country" >
+            <span *ngIf="registerForm?.get('country')?.touched && registerForm?.get('country')?.invalid" style="color: red;"></span>
+        </div> 
+        
+        <div class="form-group">
+        <label>Your email</label>
+            <input name="" class="form-control" placeholder="Email" type="email" formControlName="email" >
+            <span *ngIf="registerForm?.get('email')?.touched && registerForm?.get('email')?.invalid" style="color: red;">a valid email is required</span>
+        </div> <!-- form-group// -->
+        
+        <div class="form-group">
+        <a class="float-right" href="#">Forgot?</a>
+        <label>Your password</label>
+            <input class="form-control" placeholder="******" type="password" formControlName="password" >
+            <span *ngIf="registerForm?.get('password')?.touched && registerForm?.get('password')?.invalid" style="color: red;">a valid password is required</span>
+        </div> <!-- form-group// -->
+        <div class="form-group">
+        <div class="checkbox">
+          <label> <input type="checkbox"> Save password </label>
+        </div> <!-- checkbox .// -->
+        </div> <!-- form-group// -->  
+        <div class="form-group">
+            <button type="submit" [disabled]="registerForm.invalid" class="btn btn-primary btn-block"> Register  </button>
+        </div> <!-- form-group// -->                                                          
+    </form>
+    </article>
+    </div> <!-- card.// -->
+    
+    </aside> <!-- col.// -->
+  
+    </div> <!-- row.// -->
+    
+    </div>
+    <!--container end.//-->
+    
+    <br><br><br>
+    <article class="bg-secondary mb-3">  
+    <!--<div class="card-body text-center">
+        <h4 class="text-white">HTML UI KIT <br> Ready to use Bootstrap 4 components and templates </h4>
+    <p class="h5 text-white"> for Ecommerce, marketplace, booking websites
+    and product landing pages</p>   <br>
+    <p><a class="btn btn-warning" target="_blank" href="http://bootstrap-ecommerce.com/"> Bootstrap-ecommerce.com  
+     <i class="fa fa-window-restore "></i></a></p>
+    </div>
+    <br><br><br>-->
+    </article>
+    

@@ -1,0 +1,53 @@
+<div class="container">
+    <!--<br>  <p class="text-center">More bootstrap 4 components on <a href="http://bootstrap-ecommerce.com/"> Bootstrap-ecommerce.com</a></p>
+    <hr>-->
+    
+    <div class="row">
+    <aside class="col-sm-4 form-login">
+    <p>Login form style 1</p>
+    <div class="card">
+    <article class="card-body">
+    <a routerLink="/register" class="float-right btn btn-outline-primary">Sign up</a>
+    <h4 class="card-title mb-4 mt-1">Sign in</h4>
+    <form [formGroup]="loginForm" (submit)="onSubmit()">
+        <div class="form-group">
+        <label>Your email</label>
+            <input name="" class="form-control" placeholder="Email" type="email" formControlName="email" >
+            <span *ngIf="loginForm?.get('email')?.touched && loginForm?.get('email')?.invalid" style="color: red;">a valid email is required</span>
+        </div> <!-- form-group// -->
+        <div class="form-group">
+               <label>Your password</label>
+            <input class="form-control" placeholder="******" type="password" formControlName="password" >
+            <span *ngIf="loginForm?.get('password')?.touched && loginForm?.get('password')?.invalid" style="color: red;">a valid password is required</span>
+        </div> <!-- form-group// -->
+        <div class="form-group">
+        <div class="checkbox">
+          <label> <input type="checkbox"> Save password </label>
+        </div> <!-- checkbox .// -->
+        </div> <!-- form-group// -->  
+        <div class="form-group">
+            <button type="submit" [disabled]="loginForm.invalid" class="btn btn-primary btn-block"> Login  </button>
+        </div> <!-- form-group// -->                                                          
+    </form>
+    </article>
+    </div> <!-- card.// -->
+    
+    </aside> <!-- col.// -->
+  
+    </div> <!-- row.// -->
+    
+    </div>
+    <!--container end.//-->
+    
+    <br><br><br>
+    <article class="bg-secondary mb-3">  
+    <!--<div class="card-body text-center">
+        <h4 class="text-white">HTML UI KIT <br> Ready to use Bootstrap 4 components and templates </h4>
+    <p class="h5 text-white"> for Ecommerce, marketplace, booking websites
+    and product landing pages</p>   <br>
+    <p><a class="btn btn-warning" target="_blank" href="http://bootstrap-ecommerce.com/"> Bootstrap-ecommerce.com  
+     <i class="fa fa-window-restore "></i></a></p>
+    </div>
+    <br><br><br>-->
+    </article>
+    
