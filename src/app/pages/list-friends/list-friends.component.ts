@@ -1,3 +1,4 @@
+import { UserStoragService } from './../../service/user-storag.service';
 import { ListFriendsService } from './list-friends.service';
 import { Component, OnInit } from '@angular/core';
 import { IFriend } from './list-friends.model';
@@ -9,10 +10,11 @@ import { IFriend } from './list-friends.model';
 })
 export class ListFriendsComponent implements OnInit {
 public listFriends: IFriend[];
-  constructor(private listFriendsService: ListFriendsService) { }
+  constructor(private listFriendsService: ListFriendsService,
+       private userStoragService: UserStoragService) { }
 
   ngOnInit() {
-    this.listFriendsService.getUserFriends('at@live.fr').subscribe(
+    this.listFriendsService.getUserFriends(this.userStoragService.getEmail()).subscribe(
       res => {
         if (res['status'] === 'OK') {
           this.listFriends = res['data'];

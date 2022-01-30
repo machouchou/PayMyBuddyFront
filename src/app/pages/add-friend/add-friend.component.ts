@@ -1,3 +1,4 @@
+import { UserStoragService } from './../../service/user-storag.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -15,7 +16,7 @@ export class AddFriendComponent implements OnInit {
     addFriendForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder, public activeModal: NgbActiveModal, private addFriendService: AddFriendService,
-              private router: Router) {
+              private router: Router, private userStoragService: UserStoragService) {
     this.addFriendForm = this.formBuilder.group({
       friendEmail: ['', Validators.required],
     });
@@ -25,7 +26,7 @@ export class AddFriendComponent implements OnInit {
   onSubmit() {
     console.log('addFriend test');
     // tslint:disable-next-line: no-non-null-assertion
-    this.addFriendService.addFriend('at@live.fr', this.addFriendForm.get('friendEmail')!.value)
+    this.addFriendService.addFriend(this.userStoragService.getEmail(), this.addFriendForm.get('friendEmail')!.value)
     .subscribe(
       res => {
         if (res['status'] === 'OK') {

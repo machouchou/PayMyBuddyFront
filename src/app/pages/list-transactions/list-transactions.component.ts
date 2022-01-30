@@ -1,3 +1,4 @@
+import { UserStoragService } from './../../service/user-storag.service';
 import { IFriend } from './../list-friends/list-friends.model';
 import { ListFriendsService } from './../list-friends/list-friends.service';
 
@@ -6,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
 import { ITransaction } from './list-transactions.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddFriendComponent } from 'src/app/pages/add-friend/add-friend.component';
-import { Live } from '@ng-bootstrap/ng-bootstrap/util/accessibility/live';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SendMoneyService } from './send-money.service';
 import { Router } from '@angular/router';
@@ -25,7 +25,8 @@ connectionForm: FormGroup;
   constructor(private listTransactionsService: ListTransactionsService, 
               private modalService: NgbModal, private listFriendsService: ListFriendsService,
               private formBuilder: FormBuilder,
-              private sendMoneyService: SendMoneyService, private router: Router) {
+              private sendMoneyService: SendMoneyService, private router: Router,
+              private userStoragService: UserStoragService) {
 this.connectionForm = this.formBuilder.group({
   connection: ['', Validators.required],
   amount: ['', Validators.required],
@@ -41,10 +42,10 @@ this.connectionForm = this.formBuilder.group({
   addFriend() {
 
     const modeRef = this.modalService.open(AddFriendComponent);
-    modeRef.componentInstance.email = 'at@live.fr';
+    modeRef.componentInstance.email = this.userStoragService.getEmail();
   }
 loadTransaction() {
-  this.listTransactionsService.getUserTransactions('at@live.fr').subscribe(
+  this.listTransactionsService.getUserTransactions(this.userStoragService.getEmail()).subscribe(
     res => {
       if (res['status'] === 'OK') {
         this.listTransactions = res['data'];
@@ -57,7 +58,7 @@ loadTransaction() {
   );
 }
 loadConnection() {
-this.listFriendsService.getUserFriends('at@live.fr').subscribe(
+this.listFriendsService.getUserFriends(this.userStoragService.getEmail()).subscribe(
   res => {
     console.log(res);
     if (res['status'] === 'OK') {
@@ -73,7 +74,7 @@ this.listFriendsService.getUserFriends('at@live.fr').subscribe(
 }
 onSubmit(){
   console.log('sendMoneyTest');
-  this.sendMoneyService.sendMoney('at@live.fr',
+  this.sendMoneyService.sendMoney(this.userStoragService.getEmail(),
   this.connectionForm.get('connection')!.value, 'sendMoney',
   this.connectionForm.get('amount')!.value)
   .subscribe(
