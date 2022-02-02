@@ -14,21 +14,16 @@
           <option *ngFor="let connection of connections; let i = index" value="{{ connection.appAccountDto.email }}">{{connection.appAccountDto.email}}
           </option>
         </select>
-        <span *ngIf="connectionForm?.get('connection')?.touched && connectionForm?.get('connection')?.invalid" style="color: red;">a
-          Connection is required</span>
-    </div>
+            </div>
     <div class="form-group mx-sm-3 mb-2">
       <input type="number" class="form-control" formControlName="amount" id="inputAmount" placeholder="0€">
-      <span *ngIf="connectionForm?.get('amount')?.touched && connectionForm?.get('amount')?.invalid" style="color: red;">a
-        Amount is required</span>
     </div>
     <button type="submit" class="btn btn-success mb-2" [disabled]="connectionForm.invalid">Pay</button>
   </form>
     
 </div>
+
 <div class="col-sm-12 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-
-
   <h2 class="sub-header">My Transactions</h2>
   <div class="table-responsive">
     <table class="table table-striped">
@@ -45,7 +40,6 @@
           <td>{{t.description}}</td>
           <td>{{t.amount}}</td>
         </tr>
-
       </tbody>
     </table>
   </div>

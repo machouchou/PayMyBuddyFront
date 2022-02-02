@@ -1,3 +1,5 @@
+import { ProfileDtoComponent } from './pages/profile-dto/profile-dto.component';
+import { AuthGuard } from './security/auth.guard';
 import { Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthentificationComponent } from './auth/authentification.component';
@@ -9,6 +11,8 @@ import { RegistrationComponent } from './pages/registration/registration.compone
 import { AdminComponent } from './pages/admin/admin.component';
 import { ListTransactionsComponent } from './pages/list-transactions/list-transactions.component';
 import { ListFriendsComponent } from './pages/list-friends/list-friends.component';
+import { DepositAmountComponent } from './pages/deposit-amount/deposit-amount.component';
+import { LogoutComponent } from './pages/logout/logout.component';
 
 const appRoutes: Routes = [
     {
@@ -19,6 +23,10 @@ const appRoutes: Routes = [
     {
         path: 'login',
         component: LoginComponent
+    },
+    {
+        path: 'logout',
+        component: LogoutComponent
     },
     {
         path: 'register',
@@ -36,6 +44,9 @@ const appRoutes: Routes = [
     {
         path : 'admin',
         component : AdminComponent,
+        canActivate: [
+            AuthGuard
+        ],
         children: [
             {
                 path : 'list-transactions',
@@ -45,6 +56,16 @@ const appRoutes: Routes = [
             {
                 path : 'list-friends',
                 component : ListFriendsComponent,
+                pathMatch: 'prefix'
+            },
+            {
+                path : 'deposit-amount',
+                component : DepositAmountComponent,
+                pathMatch: 'prefix'
+            },
+            {
+                path : 'profile-dto',
+                component : ProfileDtoComponent,
                 pathMatch: 'prefix'
             }
         ]

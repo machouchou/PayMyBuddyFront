@@ -10,7 +10,6 @@ import { AuthentificationComponent } from './auth/authentification.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 
 import { routing } from './app.routing';
-import { UserComponent } from './user/user.component';
 import { UserFriendsComponent } from './user-list/user-friend-list.component';
 import { HeaderComponent } from './header/header.component';
 import { NavBarComponent } from './nav/nav-bar/nav-bar.component';
@@ -21,14 +20,20 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { ListTransactionsComponent } from './pages/list-transactions/list-transactions.component';
 import { ListFriendsComponent } from './pages/list-friends/list-friends.component';
 import { AddFriendComponent } from './pages/add-friend/add-friend.component';
-import { NgbAlertModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DepositAmountComponent } from './pages/deposit-amount/deposit-amount.component';
+import { LogoutComponent } from './pages/logout/logout.component';
+import { ProfileDtoComponent } from './pages/profile-dto/profile-dto.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthentificationComponent,
     WelcomeComponent,
-    UserComponent,
     UserFriendsComponent,
     HeaderComponent,
     NavBarComponent,
@@ -39,7 +44,10 @@ import { NgbAlertModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AdminComponent,
     ListTransactionsComponent,
     ListFriendsComponent,
-    AddFriendComponent
+    AddFriendComponent,
+    DepositAmountComponent,
+    LogoutComponent,
+    ProfileDtoComponent
   ],
   entryComponents: [AddFriendComponent],
 
@@ -49,7 +57,11 @@ import { NgbAlertModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
     routing,
     HttpClientModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
+
+
 
   ],
   providers: [],

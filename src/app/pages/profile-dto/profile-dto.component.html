@@ -1,0 +1,33 @@
+<p>profile-dto works!</p>
+<div class="col-sm-12 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    
+
+    <h2 class="sub-header">My Profile</h2>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>FirstName</th>
+          <th>LastName</th>
+          <th>BirthDate</th>
+          <th>Address</th>
+          <th>Country</th>
+          <th>Email</th>
+          <th>AccountBalance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{profile?.firstName}}</td>
+          <td>{{'lastName'}}</td>
+          <td>{{'birthDate'}}</td>
+          <td>{{'address'}}</td>
+          <td>{{'country'}}</td>
+          <td>{{'appAccountDto?.email'}}</td>
+          <td>{{profile?.amountBalance}}</td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
+</div>

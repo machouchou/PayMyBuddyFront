@@ -16,6 +16,11 @@ export class UserStoragService {
     return window.sessionStorage.getItem(EMAIL_KEY);
 
   }
+
+  public logout() {
+    console.log('pour test');
+    window.sessionStorage.clear();
+  }
 }
 
 

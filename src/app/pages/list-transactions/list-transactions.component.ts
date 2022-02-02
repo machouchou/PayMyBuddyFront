@@ -43,6 +43,11 @@ this.connectionForm = this.formBuilder.group({
 
     const modeRef = this.modalService.open(AddFriendComponent);
     modeRef.componentInstance.email = this.userStoragService.getEmail();
+    modeRef.result.then((result) => {
+      if (result== 'data insert') {
+        this.loadConnection();
+      }
+    })
   }
 loadTransaction() {
   this.listTransactionsService.getUserTransactions(this.userStoragService.getEmail()).subscribe(
@@ -82,7 +87,7 @@ onSubmit(){
     res => {
       console.log(res);
       if (res['status'] === 'OK') {
-
+        this.loadTransaction();
       }
     }
   );

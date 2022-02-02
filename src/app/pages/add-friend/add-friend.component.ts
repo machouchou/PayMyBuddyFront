@@ -31,6 +31,7 @@ export class AddFriendComponent implements OnInit {
       res => {
         if (res['status'] === 'OK') {
           console.log(res);
+          this.activeModal.close('data insert');
          } else {
           console.log(res);
         }
