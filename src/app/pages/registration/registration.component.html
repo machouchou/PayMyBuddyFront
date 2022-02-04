@@ -43,8 +43,7 @@
         </div> <!-- form-group// -->
         
         <div class="form-group">
-        <a class="float-right" href="#">Forgot?</a>
-        <label>Your password</label>
+          <label>Your password</label>
             <input class="form-control" placeholder="******" type="password" formControlName="password" >
             <span *ngIf="registerForm?.get('password')?.touched && registerForm?.get('password')?.invalid" style="color: red;">a valid password is required</span>
         </div> <!-- form-group// -->

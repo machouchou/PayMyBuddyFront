@@ -62,7 +62,14 @@ creditAccount(amount) {
 
       res => {
         console.log(res);
-        if (res['status'] === 'OK') {}
+        if (res['errorCode'] === null) {
+          this.toastr.success('Debit Transaction successful', 'Transaction Message');
+        } else {
+          this.toastr.error(res['errorDescription'], 'Transaction Message');
+        }
+      },
+      error => {
+        this.toastr.error('An error occurred please contact the administrator', 'Transaction Message' );
       }
     );
   }
