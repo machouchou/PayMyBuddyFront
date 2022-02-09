@@ -14,7 +14,7 @@ export class LoginService {
   }
 
   public authenticate(email: string, password: string) {
-    return this.http.post(`${this.apiUrl}/userLogin`,
+    return this.http.post(`${this.apiUrl}userLogin`,
       {
         email,
         password

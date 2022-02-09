@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
+import { IRegistration } from './registration.model';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -15,17 +16,9 @@ export class RegistrationService {
   constructor(private http: HttpClient) {
   }
 
-  public registrate(firstName: string, lastName: string, birthDate: number,
-                    address: string, country: string, email: string, password: string) {
-    return this.http.post(`${this.apiUrl}/userLogin`,
-      {
-        firstName,
-        lastName,
-        birthDate,
-        address,
-        email,
-        password
-      },
+  public registrate(registration: IRegistration) {
+    return this.http.post(`${this.apiUrl}/user`,
+     registration,
       httpOptions
     );
   }

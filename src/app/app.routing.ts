@@ -1,11 +1,6 @@
 import { ProfileDtoComponent } from './pages/profile-dto/profile-dto.component';
 import { AuthGuard } from './security/auth.guard';
-import { Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthentificationComponent } from './auth/authentification.component';
-import { HomeComponent } from './home/home.component';
-import { RegisterComponent } from './home/register.component';
-import { WelcomeComponent } from './welcome/welcome.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
 import { AdminComponent } from './pages/admin/admin.component';
@@ -31,15 +26,6 @@ const appRoutes: Routes = [
     {
         path: 'register',
         component: RegistrationComponent
-    },
-    {
-       path : 'auth',
-       // canActivate: [LoginService],
-        component : AuthentificationComponent
-    },
-    {
-        path : 'welcome',
-        component : WelcomeComponent
     },
     {
         path : 'admin',

@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { AddFriendService } from './add-friend.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-friend',
@@ -16,7 +17,7 @@ export class AddFriendComponent implements OnInit {
     addFriendForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder, public activeModal: NgbActiveModal, private addFriendService: AddFriendService,
-              private router: Router, private userStoragService: UserStoragService) {
+              private router: Router, private userStoragService: UserStoragService, private toastr: ToastrService) {
     this.addFriendForm = this.formBuilder.group({
       friendEmail: ['', Validators.required],
     });
@@ -25,19 +26,20 @@ export class AddFriendComponent implements OnInit {
   }
   onSubmit() {
     console.log('addFriend test');
-    // tslint:disable-next-line: no-non-null-assertion
-    this.addFriendService.addFriend(this.userStoragService.getEmail(), this.addFriendForm.get('friendEmail')!.value)
+      this.addFriendService.addFriend(this.userStoragService.getEmail(), this.addFriendForm.get('friendEmail')!.value)
     .subscribe(
       res => {
         if (res['status'] === 'OK') {
+          this.toastr.success('Added Friend successful', 'Transaction Message');
           console.log(res);
           this.activeModal.close('data insert');
          } else {
           console.log(res);
+          this.toastr.error(res['errorDescription'], 'Transaction Message');
         }
       },
       error => {
-        console.log(error);
+        this.toastr.error('An error occurred please contact the administrator', 'Transaction Message' );
       }
     );
 

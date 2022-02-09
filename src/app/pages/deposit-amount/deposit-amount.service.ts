@@ -15,7 +15,7 @@ export class DepositAmountService {
   constructor(private http: HttpClient) { }
 
   public addMoneyOnPMD(email: string, depositMoney: number, description: string) {
-    return this.http.post(`${this.apiUrl}/depositAmount`,
+    return this.http.post(`${this.apiUrl}depositAmount`,
     {
       email,
       depositMoney,

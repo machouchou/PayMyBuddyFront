@@ -15,7 +15,7 @@ export class DebitPmbService {
   constructor(private http: HttpClient) { }
 
   public debitAccountPMD(email: string, depositMoney: number, description: string) {
-    return this.http.post(`${this.apiUrl}/sendMoney`,
+    return this.http.post(`${this.apiUrl}sendMoney`,
     {
       email,
       depositMoney,

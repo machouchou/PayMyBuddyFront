@@ -16,6 +16,7 @@ export class DepositAmountComponent implements OnInit {
               private userStoragService: UserStoragService, private debitPmbService: DebitPmbService, private toastr: ToastrService
               ) {
        this.connectionForm = this.formBuilder.group({
+        description: ['', Validators.required],
          amount: ['', Validators.required],
          transaction: ['', Validators.required]
        });
@@ -28,23 +29,25 @@ export class DepositAmountComponent implements OnInit {
   onSubmit() {
   console.log('depositAmount');
   let t = this.connectionForm.get('transaction')!.value;
+  let d = this.connectionForm.get('description')!.value;
   let a = this.connectionForm.get('amount')!.value;
   if (t=='CREDIT') {
-    this.creditAccount(a);
+    this.creditAccount(d, a);
   } else {
-    this.debitAccount(a);
+    this.debitAccount(d, a);
   }
   }
-creditAccount(amount) {
+creditAccount(description, amount) {
   this.depositAmountService.addMoneyOnPMD(this.userStoragService.getEmail(),
-  amount,
-  'alimentation compte PMB')
+    amount,
+    description)
   .subscribe(
 
     res => {
       console.log(res);
       if (res['errorCode'] === null) {
         this.toastr.success('Credit Transaction successful', 'Transaction Message');
+        this.resetForm();
       } else {
         this.toastr.error(res['errorDescription'], 'Transaction Message');
       }
@@ -54,16 +57,17 @@ creditAccount(amount) {
     }
   );
   }
-  debitAccount(amount) {
+  debitAccount(description, amount) {
     this.debitPmbService.debitAccountPMD(this.userStoragService.getEmail(),
     amount,
-    'débiter mon compte PMB')
+    description)
     .subscribe(
 
       res => {
         console.log(res);
         if (res['errorCode'] === null) {
           this.toastr.success('Debit Transaction successful', 'Transaction Message');
+          this.resetForm();
         } else {
           this.toastr.error(res['errorDescription'], 'Transaction Message');
         }
@@ -72,5 +76,8 @@ creditAccount(amount) {
         this.toastr.error('An error occurred please contact the administrator', 'Transaction Message' );
       }
     );
+  }
+  resetForm() {
+    this.connectionForm.reset();
   }
 }
