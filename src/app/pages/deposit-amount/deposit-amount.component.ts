@@ -73,7 +73,7 @@ creditAccount(description, amount) {
         }
       },
       error => {
-        this.toastr.error('An error occurred please contact the administrator', 'Transaction Message' );
+        this.toastr.error('Your balance is not enough for the sending', 'Transaction Message' );
       }
     );
   }
