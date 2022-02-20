@@ -44,7 +44,7 @@ export class ListTransactionsComponent implements OnInit {
   }
 
   ngOnInit() {
-   // this.loadTransaction();
+    this.loadTransaction(this.page, this.itemsPerPage);
     this.loadConnection();
 
   }
@@ -111,8 +111,8 @@ export class ListTransactionsComponent implements OnInit {
           if (res['errorCode'] === null) {
             this.toastr.success('Transaction successful', 'Transaction Message');
             setTimeout(() => {
-             // this.loadTransaction();
-            }, 2000);
+            this.loadTransaction(this.page, this.itemsPerPage);
+            }, 1000);
             this.resetForm();
           } else {
             this.toastr.error(res['errorDescription'], 'Transaction Message');
